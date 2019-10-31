@@ -1,0 +1,27 @@
+{
+  "name": "rb-electron-test",
+  "version": "1.0.0",
+  "description": "Test project for mastering electron",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "watch": "nodemon --exec \"electron .\"",
+    "reset": "git reset --hard",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "https://github.com/ptaucher/rb-electron-test",
+  "keywords": [
+    "Electron",
+    "Demo",
+    "Example"
+  ],
+  "author": "Peter Taucher",
+  "license": "CC BY",
+  "devDependencies": {
+    "electron": "^5.0.10",
+    "nodemon": "^1.19.2"
+  },
+  "dependencies": {
+    "electron-window-state": "^5.0.3"
+  }
+}
