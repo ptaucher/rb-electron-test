@@ -7,7 +7,8 @@
     "start": "electron .",
     "watch": "nodemon --exec \"electron .\"",
     "reset": "git reset --hard",
-    "build": "electron-builder --help"
+    "build": "electron-builder -w",
+    "win-cert": "electron-builder create-self-signed-cert -p statsperform"
   },
   "repository": "https://github.com/ptaucher/rb-electron-test",
   "homepage": "https://github.com/ptaucher/rb-electron-test",
@@ -34,7 +35,9 @@
       "target": "dmg"
     },
     "win": {
-      "target": "zip"
+      "certificateFile": "private/statsperform.pfx",
+      "verifyUpdateCodeSignature": false,
+      "publisherName": "statsperform"
     },
     "linux": {
       "category": "Utility"
