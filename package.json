@@ -8,7 +8,7 @@
     "watch": "nodemon --exec \"electron .\"",
     "reset": "git reset --hard",
     "build": "electron-builder -w",
-    "release": "electron-builder -w -p 'onTagOrDraft'",
+    "release": "electron-builder -w -p \"onTagOrDraft\",",
     "win-cert": "electron-builder create-self-signed-cert -p statsperform"
   },
   "repository": "https://github.com/ptaucher/rb-electron-test",
@@ -35,7 +35,7 @@
       "provider": "github"
     },
     "mac": {
-      "category": "public.app-category.education",
+      "category": "public.app-category.education"
     },
     "win": {
       "certificateFile": "private/statsperform.pfx",
