@@ -8,6 +8,7 @@
     "watch": "nodemon --exec \"electron .\"",
     "reset": "git reset --hard",
     "build": "electron-builder -w",
+    "release": "electron-builder -w -p 'onTagOrDraft'",
     "win-cert": "electron-builder create-self-signed-cert -p statsperform"
   },
   "repository": "https://github.com/ptaucher/rb-electron-test",
@@ -30,12 +31,15 @@
   "build": {
     "appId": "com.statsperform.electron-test",
     "copyright": "Copyright 2019 StatsPerform",
+    "publish": {
+      "provider": "github"
+    },
     "mac": {
       "category": "public.app-category.education",
-      "target": "dmg"
     },
     "win": {
       "certificateFile": "private/statsperform.pfx",
+      "certificatePassword": "",
       "verifyUpdateCodeSignature": false,
       "publisherName": "statsperform"
     },
