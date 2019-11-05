@@ -15,6 +15,7 @@ const updater = require('./updater')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
+let monitorWindow
 
 // Listen for new item request
 ipcMain.on('new-item', (e, itemUrl) => {
@@ -50,6 +51,8 @@ function createWindow() {
     // Load main.html into the new BrowserWindow
     mainWindow.loadFile('renderer/main.html')
 
+    mainWindow.webContents.openDevTools()
+
     // Listen for window being closed
     mainWindow.on('closed', () => {
         mainWindow = null
@@ -79,6 +82,31 @@ function createWindow() {
     })
 }
 
+function createMonitorWindow() {
+    // Create a new window
+    monitorWindow = new BrowserWindow({
+        // Set the initial width to 500px
+        width: 500,
+        // Set the initial height to 400px
+        height: 400,
+        // set the title bar style
+        titleBarStyle: 'hiddenInset',
+        // set the background color to black
+        backgroundColor: "#111",
+        // Don't show the window until it's ready, this prevents any white flickering
+        show: false,
+        webPreferences: {nodeIntegration: true}
+    })
+
+    monitorWindow.loadFile("renderer/monitor.html")
+
+    monitorWindow.webContents.openDevTools()
+
+    monitorWindow.once('ready-to-show', () => {
+        monitorWindow.show()
+    })
+}
+
 /*
 app.on('browser-window-blur', () => {
   console.log('App unfocused')
@@ -98,6 +126,7 @@ app.on('ready', () => {
     console.log(app.getPath('temp'))
     console.log(app.getPath('userData'))
     createWindow()
+    createMonitorWindow()
     // setTimeout(app.focus, 1000)
 })
 

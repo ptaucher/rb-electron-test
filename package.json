@@ -1,7 +1,7 @@
 {
   "name": "rb-electron-test",
-  "version": "1.0.0",
-  "description": "Test project for mastering electron",
+  "version": "1.1.0",
+  "description": "Resource Monitor",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -16,7 +16,10 @@
   "keywords": [
     "Electron",
     "Demo",
-    "Example"
+    "Example",
+    "Resource",
+    "CPU",
+    "Monitor"
   ],
   "author": "Peter Taucher",
   "license": "CC BY",
@@ -26,9 +29,13 @@
     "nodemon": "^1.19.2"
   },
   "dependencies": {
+    "bootstrap": "^4.3.1",
+    "electron-chartjs": "^1.0.0",
     "electron-log": "^3.0.8",
     "electron-updater": "^4.2.0",
-    "electron-window-state": "^5.0.3"
+    "electron-window-state": "^5.0.3",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.0"
   },
   "build": {
     "appId": "com.statsperform.electron-test",

@@ -1,6 +1,7 @@
 
 // Modules
 const {ipcRenderer} = require('electron')
+const monitor = require('./monitor')
 const items = require('./items')
 
 // Dom Nodes
