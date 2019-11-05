@@ -8,7 +8,7 @@
     "watch": "nodemon --exec \"electron .\"",
     "reset": "git reset --hard",
     "build": "electron-builder -w",
-    "release": "electron-builder -w -p \"onTagOrDraft\",",
+    "release": "electron-builder -w -p onTagOrDraft",
     "win-cert": "electron-builder create-self-signed-cert -p statsperform"
   },
   "repository": "https://github.com/ptaucher/rb-electron-test",
@@ -26,6 +26,8 @@
     "nodemon": "^1.19.2"
   },
   "dependencies": {
+    "electron-log": "^3.0.8",
+    "electron-updater": "^4.2.0",
     "electron-window-state": "^5.0.3"
   },
   "build": {
