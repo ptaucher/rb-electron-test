@@ -1,10 +1,16 @@
+const {ipcRenderer} = require('electron')
 const os = require('os')
-const chartjs = require('electron-chartjs')
-
-window.$ = window.jQuery = require('jquery');
+const Chart = require('chart.js')
+// window.$ = window.jQuery = require('jquery');
 
 var chart = null;
 var lastMeasureTimes = [];
+
+// Initialize/Start monitor only after the window is ready to show (-> call this via IPC)
+ipcRenderer.on('init-monitor', (flag) => {
+    setLastMeasureTimes(os.cpus());
+    drawChart()
+})
 
 function setLastMeasureTimes(cpus) {
     for (let i = 0; i < cpus.length; i++) {
@@ -54,7 +60,10 @@ function getCpuTimes(cpu) {
 }
 
 function drawChart() {
-    chart = chartjs({
+    // chart = chartjs({
+    // chart = new Chart($('.chart'), {
+    var ctx = document.getElementById("monitor-chart").getContext("2d");
+    chart = new Chart(ctx, {
         type: 'pie',
         data: {
             labels: [
@@ -84,8 +93,3 @@ function drawChart() {
 
     setInterval(updateDatasets, 1000);
 }
-
-$(() => {
-    setLastMeasureTimes(os.cpus());
-    drawChart();
-})

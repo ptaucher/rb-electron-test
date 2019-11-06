@@ -11,7 +11,10 @@
     "release": "electron-builder -w -p onTagOrDraft",
     "win-cert": "electron-builder create-self-signed-cert -p statsperform"
   },
-  "repository": "https://github.com/ptaucher/rb-electron-test",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ptaucher/rb-electron-test.git"
+  },
   "homepage": "https://github.com/ptaucher/rb-electron-test",
   "keywords": [
     "Electron",
@@ -29,13 +32,10 @@
     "nodemon": "^1.19.2"
   },
   "dependencies": {
-    "bootstrap": "^4.3.1",
-    "electron-chartjs": "^1.0.0",
+    "chart.js": "^2.9.2",
     "electron-log": "^3.0.8",
     "electron-updater": "^4.2.0",
-    "electron-window-state": "^5.0.3",
-    "jquery": "^3.4.1",
-    "popper.js": "^1.16.0"
+    "electron-window-state": "^5.0.3"
   },
   "build": {
     "appId": "com.statsperform.electron-test",
@@ -55,5 +55,8 @@
     "linux": {
       "category": "Utility"
     }
+  },
+  "bugs": {
+    "url": "https://github.com/ptaucher/rb-electron-test/issues"
   }
 }

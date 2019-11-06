@@ -83,12 +83,15 @@ function createWindow() {
 }
 
 function createMonitorWindow() {
+    let windowState = windowStateKeeper({
+        defaultWidth: 500, defaultHeight: 400
+    })
+
     // Create a new window
     monitorWindow = new BrowserWindow({
-        // Set the initial width to 500px
-        width: 500,
-        // Set the initial height to 400px
-        height: 400,
+        width: windowState.width, height: windowState.height,
+        x: windowState.x, y: windowState.y,
+        minWidth: 300, maxWidth: 800, minHeight: 300, maxHeight: 800,
         // set the title bar style
         titleBarStyle: 'hiddenInset',
         // set the background color to black
@@ -98,12 +101,15 @@ function createMonitorWindow() {
         webPreferences: {nodeIntegration: true}
     })
 
+    windowState.manage(monitorWindow)
+
     monitorWindow.loadFile("renderer/monitor.html")
 
     monitorWindow.webContents.openDevTools()
 
     monitorWindow.once('ready-to-show', () => {
         monitorWindow.show()
+        monitorWindow.webContents.send('init-monitor', true)
     })
 }
 
@@ -137,7 +143,12 @@ app.on('window-all-closed', () => {
 
 // When app icon is clicked and app is running, (macOS) recreate the BrowserWindow
 app.on('activate', () => {
-    if (mainWindow === null) createWindow()
+    if (mainWindow === null) {
+        createWindow()
+    }
+    if (monitorWindow === null) {
+        createMonitorWindow()
+    }
 })
 
 
