@@ -51,7 +51,7 @@ function createWindow() {
     // Load main.html into the new BrowserWindow
     mainWindow.loadFile('renderer/main.html')
 
-    mainWindow.webContents.openDevTools()
+    // mainWindow.webContents.openDevTools()
 
     // Listen for window being closed
     mainWindow.on('closed', () => {

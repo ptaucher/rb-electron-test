@@ -10,6 +10,10 @@ var lastMeasureTimes = [];
 ipcRenderer.on('init-monitor', (flag) => {
     setLastMeasureTimes(os.cpus());
     drawChart()
+
+    document.getElementById("monitor-os-arch").innerText = os.arch()
+    document.getElementById("monitor-cpus").innerText = os.cpus().length
+
 })
 
 function setLastMeasureTimes(cpus) {

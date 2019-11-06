@@ -10,3 +10,7 @@ html {
 .container-fluid {
     padding: 25px;
 }
+
+.chart {
+    width: 100%;
+}
