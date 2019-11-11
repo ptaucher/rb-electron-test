@@ -8,12 +8,17 @@ var lastMeasureTimes = [];
 
 // Initialize/Start monitor only after the window is ready to show (-> call this via IPC)
 ipcRenderer.on('init-monitor', (flag) => {
+    console.log('init monitor')
+
+    document.getElementById('info').innerText =
+        'Host: ' + os.hostname() +
+        ', Platform: ' + os.platform() +
+        ', CPU Arch: ' + os.arch() +
+        ', Cores: ' + os.cpus().length +
+        ', Memory: ' + Math.round(os.totalmem() / 1024 / 1024 / 1024, 2) + ' GB'
+
     setLastMeasureTimes(os.cpus());
     drawChart()
-
-    document.getElementById("monitor-os-arch").innerText = os.arch()
-    document.getElementById("monitor-cpus").innerText = os.cpus().length
-
 })
 
 function setLastMeasureTimes(cpus) {

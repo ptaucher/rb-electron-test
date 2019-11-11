@@ -51,7 +51,7 @@ function createWindow() {
     // Load main.html into the new BrowserWindow
     mainWindow.loadFile('renderer/main.html')
 
-    // mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
 
     // Listen for window being closed
     mainWindow.on('closed', () => {
@@ -65,7 +65,7 @@ function createWindow() {
     })
      */
     wc.on('did-finish-load', () => {
-        console.log('Content fully loaded')
+        console.log('main window fully loaded')
     })
     wc.on('dom-ready', () => {
         console.log('DOM ready')
@@ -109,6 +109,11 @@ function createMonitorWindow() {
 
     monitorWindow.once('ready-to-show', () => {
         monitorWindow.show()
+    })
+
+    let wc = monitorWindow.webContents
+    wc.on('did-finish-load', () => {
+        console.log('monitor window fully loaded')
         monitorWindow.webContents.send('init-monitor', true)
     })
 }
