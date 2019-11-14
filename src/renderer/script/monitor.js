@@ -8,7 +8,7 @@ var lastMeasureTimes = [];
 
 // Initialize/Start monitor only after the window is ready to show (-> call this via IPC)
 ipcRenderer.on('init-monitor', (flag) => {
-    console.log('init monitor')
+    console.log('Received init-monitor via ipcRenderer')
 
     document.getElementById('info').innerText =
         'Host: ' + os.hostname() +

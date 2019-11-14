@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
     <title>Readit</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../style/main.css">
   </head>
-  <body>
 
+  <body>
     <header>
       <button id="show-modal">+</button>
       <input type="text" id="search" placeholder="Search">
     </header>
 
     <main>
-      <p id="no-items">No Items</p>
-      <div id="items"></div>
+      <p id="no-main">No Items</p>
+      <div id="main"></div>
     </main>
 
     <div id="modal">
@@ -25,8 +26,9 @@
     </div>
 
     <script>
-      require('./app')
-      require('./menu')
+      require('../app')
+      require('../script/mainMenu')
     </script>
   </body>
+
 </html>

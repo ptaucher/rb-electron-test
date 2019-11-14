@@ -44,13 +44,15 @@ const template = [
         submenu: [
             {
                 label: 'Learn more',
-                click: () => {shell.openExternal('https://github.com/ptaucher/rb-electron-test')}
+                click: () => {
+                    shell.openExternal('https://github.com/ptaucher/rb-electron-test')
+                }
             }
         ]
     }
 ]
 
-// Set Mac-specific first menu item
+// Set Mac-specific first mainMenu item
 if (process.platform === 'darwin') {
     template.unshift({
         label: remote.app.getName(),
@@ -68,8 +70,8 @@ if (process.platform === 'darwin') {
     })
 }
 
-// Build menu
-const menu = remote.Menu.buildFromTemplate(template)
+// Build mainMenu
+const mainMenu = remote.Menu.buildFromTemplate(template)
 
-// Set as main menu
-remote.Menu.setApplicationMenu(menu)
+// Set as main mainMenu
+remote.Menu.setApplicationMenu(mainMenu)
